@@ -1,0 +1,46 @@
+<app-header></app-header>
+<main class="d-flex flex-column w-100 justify-content-center align-items-center main-request bg-black">
+    <div class="container container-tt text-white">
+      <h1 class="mb-4 title-form text-center">Nueva Vacante</h1>
+      <div *ngIf="error_message" class="alert alert-danger mt-3">{{error_message}}</div>
+
+      <form [formGroup]="requestForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="title" class="text-white">Título</label>
+          <input type="text" class="form-control" id="title" formControlName="title">
+          <div *ngIf="submitted && requestForm.controls['title'].invalid" class="text-danger">
+            <div *ngIf="requestForm.controls['title'].errors?.['required']">El titulo es obligatorio</div>
+            <div *ngIf="requestForm.controls['title'].errors?.['maxlength']">El titulo no puede tener más de de 50 cáracteres</div>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <label for="new_member_instrument">Instrumento requerido</label>
+          <input type="text" class="form-control" id="new_member_instrument" formControlName="new_member_instrument">
+          <div *ngIf="submitted && requestForm.controls['new_member_instrument'].invalid" class="text-danger">
+            <div *ngIf="requestForm.controls['new_member_instrument'].errors?.['required']">El instrumento requerido es obligatorio</div>
+            <div *ngIf="requestForm.controls['new_member_instrument'].errors?.['maxlength']">El instrumento requerido no puede tener más de 20 cáracteres</div>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <label for="instrument_level">Nivel con el insturmento</label>
+          <input type="text" class="form-control" id="instrument_level" formControlName="instrument_level">
+          <div *ngIf="submitted && requestForm.controls['instrument_level'].invalid" class="text-danger">
+            <div *ngIf="requestForm.controls['instrument_level'].errors?.['required']">El nivel del instrumento es obligatorio</div>
+            <div *ngIf="requestForm.controls['instrument_level'].errors?.['maxlength']">El nivel del instrumento no puede tener más de 20 cáracteres</div>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <label for="description">Descripción</label>
+          <textarea class="form-control" id="description" formControlName="description"></textarea>
+          <div *ngIf="submitted && requestForm.controls['description'].invalid" class="text-danger">
+            La descripción no debe superar los 100 caracteres.
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block w-100 btn-color-primary-tt my-3">Enviar</button>
+
+        <input type="hidden" formControlName="band_id" value="{{getBandId()}}">
+      </form>
+
+    </div>
+  </main>
+  

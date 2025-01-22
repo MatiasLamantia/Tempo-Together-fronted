@@ -1,0 +1,43 @@
+<app-header></app-header>
+<main class="d-flex flex-column h-100 w-100 justify-content-center align-items-center main-addInstrument bg-black">
+  @if(finished){
+    <div class="alert alert-success d-flex align-items-center" role="alert">
+      <img src="assets/img/Nota_caras.svg" alt="Mascota de TempoTogether" class="nota_caras">
+      <h2>¡Tus instrumentos han sido guardados con éxito!</h2>
+    </div>
+    <div>
+      <h4>¿Quieres registrar a tu banda?</h4>
+      <div class="d-flex gap-5 justify-content-center">
+        <a class="btn btn-primary w-50 btn-color-primary-tt" [routerLink]="['/registro-banda']" routerLinkActive="router-link-active" >Sí</a>
+        <a class="btn btn-primary w-50 btn-color-secondary-tt" [routerLink]="['/home-usuario']" routerLinkActive="router-link-active" >No</a>
+      </div>
+    </div>
+  } @else {
+  <div class="container container-tt text-light">
+    <h1 class="mb-4 title-form">¿Qué tocas?</h1>
+
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{errorMessage}}</div>
+
+    <div class="form-group my-4" *ngFor="let instrument of instrumentosMostrar; trackBy: trackById">
+      <label for="{{instrument.instrument_id}}" class="form-label">{{instrument.instrument}} </label>
+      <input type="range" class="form-range" min="0" max="4" step="1" id="{{instrument.instrument_id}}" [(ngModel)]="levels[instrument.instrument_id]">
+      <div class="w-100 d-flex justify-content-between">
+        <span class="range_point">Ninguno</span>
+        <span class="range_point">Novato</span>
+        <span class="range_point">Principiante</span>
+        <span class="range_point">Intermedio</span>
+        <span class="range_point">Profesional</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedInstrument" (change)="agregarInstrumento(selectedInstrument)">
+        <option value="" disabled>Añadir otros</option>
+        <option *ngFor="let instrument of instruments; trackBy: trackById" [value]="instrument.instrument_id">{{instrument.instrument}}</option>
+      </select>
+    </div>
+
+    <button class="btn btn-primary w-100 mt-5 btn-color-primary-tt" (click)="onSubmit()">Guardar</button>
+  </div>
+}
+</main>

@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
+@import url("../node_modules/bootstrap/dist/css/bootstrap-utilities.css");
+
+@import url('assets/fonts/Thunder-SemiBoldLC.css');
+@import url('assets/fonts/Thunder-BlackLC.css');
+
+body{
+    font-family: "Manrope";
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.bg-secondary-tt{
+    background-color: #151619 !important;
+}
+
+.color-primary {
+    color: #D61A46 !important;
+}
+.form-optional{
+    font-size: 0.7em;
+    color: #D61A46;
+
+}
+.btn-color-primary-tt{
+    background-color: #D61A46 !important;
+    border: none;
+    color : white;
+}
+.btn-color-primary-tt:hover{
+    background-color: #a90f37 !important;
+
+}
+  
+.pointer-tt{
+    cursor: pointer;
+}
+.btn-color-secondary-tt{
+    background-color: #153563 !important;
+    border: none;
+}
+.btn-color-secondary-tt:hover{
+    background-color: #122A4B !important;
+}
+.title-form{
+    font-family: "ThunderBlack";
+    font-size: 9em;
+}
+
+.subtitle-sm-tt{
+    color: #D61A46;
+}
+
+
+@media (min-width: 1000px) {
+    .container-tt{
+        max-width: 700px !important;
+    }
+  }
+  

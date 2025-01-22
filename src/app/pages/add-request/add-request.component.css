@@ -1,0 +1,21 @@
+.main-request {
+    min-height: 100vh;
+    background-color: #000;
+  }
+
+.title-form{
+  font-size: 7em;
+}
+  
+
+@media (max-width: 768px) {
+  .title-form{
+    font-size: 5em;
+  }
+}
+
+@media (max-width: 576px) {
+  .title-form{
+    font-size: 3.5em;
+  }
+}

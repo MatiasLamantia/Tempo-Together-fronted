@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+<main class="main-verTodos bg-black text-light">
+    <section class="container">
+        <section class="w-100 bg-secondary-tt rounded-2 p-4">
+            <div class="w-25 select-tipo">
+                <select class="form-select " aria-label="Select Tipo" (change)="onOptionChange($event)">
+                    <option value="conciertos" [selected]="tipo === 'conciertos'">Conciertos</option>
+                    <option value="requests" [selected]="tipo === 'requests'">Requests</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="row mt-5">
+            @if(tipo === 'conciertos'){
+                @for(concert of resultados; track concert.concert_id){
+                    <app-concert [concert]="concert" class="col-12 col-md-6 "></app-concert>
+                }
+            }@else{
+                @for(request of resultados; track request.request_id){
+                    <app-request [request]="request" class="col-12 col-md-6 mb-3"></app-request>
+                }
+            }
+        </section>
+    </section>
+
+</main>

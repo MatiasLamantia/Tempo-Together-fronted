@@ -1,0 +1,79 @@
+<app-header></app-header>
+<main class="d-flex flex-column w-100 justify-content-center align-items-center main-register bg-black">
+    <div class="container container-tt text-white">
+      <h1 class="mb-4 title-form">Añadir Concierto</h1>
+      <div *ngIf="error_message" class="alert alert-danger mt-3">{{error_message}}</div>
+
+        <form [formGroup]="concertForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="title">Título</label>
+            <input type="text" class="form-control" id="title" formControlName="title">
+            <div *ngIf="submitted && concertForm.controls['title'].invalid" class="text-danger">
+              El título es obligatorio y debe tener entre 5 y 70 caracteres.
+            </div>
+          </div>
+
+          <div class="form-group mt-3">
+            <label for="date">Fecha</label>
+            <input type="date" class="form-control" id="date" formControlName="date">
+            <div *ngIf="submitted && concertForm.controls['date'].invalid" class="text-danger">
+              La fecha es obligatoria y debe tener el formato dd/mm/yyyy.
+            </div>
+          </div>
+
+          <div class="form-group mt-3">
+            <label for="time">Hora<span class="form-optional">(hh:mm)</span></label>
+
+            <input type="text" class="form-control" id="time" formControlName="time">
+            <div *ngIf="submitted && concertForm.controls['time'].invalid" class="text-danger">
+              La hora es obligatoria y debe tener el formato hh:mm.
+            </div>
+          </div>
+
+          <div class="form-group mt-3">
+            <label for="place">Lugar</label>
+            <input type="text" class="form-control" id="place" formControlName="place">
+            <div *ngIf="submitted && concertForm.controls['place'].invalid" class="text-danger">
+              El lugar es obligatorio y no debe superar los 50 caracteres.
+            </div>
+          </div>
+
+          <div class="form-group mt-3">
+            <label for="desc">Descripción</label>
+            <textarea class="form-control" id="desc" formControlName="desc"></textarea>
+            <div *ngIf="submitted && concertForm.controls['desc'].invalid" class="text-danger">
+              La descripción no debe superar los 100 caracteres.
+            </div>
+          </div>
+
+          <section>
+            <div class="form-group mt-3">
+              <label for="map">Ubicación</label>
+                <div class="" style="overflow: hidden;border-radius: 1em;">
+                  <div id="map" style="height: 400px;"></div>
+                </div>
+                
+              <input type="hidden" formControlName="latitude">
+              <input type="hidden" formControlName="longitude">
+
+              <div *ngIf="submitted && concertForm.controls['latitude'].invalid" class="text-danger">
+                La ubicación es obligatoria.
+              </div>
+            </div>
+          </section>
+
+          <div class="form-group mt-3">
+            <label for="poster">Póster</label>
+            <input type="file" class="form-control" id="poster" (change)="onFileChange($event)">
+            <div *ngIf="submitted && concertForm.controls['poster'].invalid" class="text-danger">
+              El póster debe ser un archivo de imagen válido.
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-block w-100 btn-color-primary-tt mb-5 mt-5">Añadir Concierto</button>
+          
+        </form>
+      </div>
+
+  </main>
+  

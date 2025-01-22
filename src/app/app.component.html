@@ -1,0 +1,57 @@
+<main>
+    <div class="modal fade text-light" id="contacto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="contacto" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content bg-secondary-tt">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Contacto de {{ contactoSeleccionado?.name }}</h1>
+            <button type="button" class="btn-close" style="filter: invert(1);" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p><i class="fa-regular fa-envelope" style="color: #D61A46;"></i><span class="mx-2">{{ contactoSeleccionado?.email }}</span></p>
+            <p><i class="fa-solid fa-phone" style="color: #D61A46;"></i><span class="mx-2">{{ contactoSeleccionado?.telephone }}</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="modal modal-lg fade text-light" id="concert" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="concert" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content bg-secondary-tt">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">{{conciertoSeleccionado?.title}}</h1>
+            <button type="button" class="btn-close" style="filter: invert(1);" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h4 class="color-primary">Descripción:</h4>
+            <p>{{conciertoSeleccionado?.desc}}</p>
+  
+            <h4 class="color-primary">Fecha:</h4>
+            <p>{{conciertoSeleccionado?.date}} a {{conciertoSeleccionado?.time}}</p>
+  
+            <h4 class="color-primary">Lugar:</h4>
+            <p>{{conciertoSeleccionado?.place}}</p>
+  
+            <h4 class="color-primary">Ubicación:</h4>
+            <section class="rounded-4" style="overflow: hidden;">
+              <div id="mapModal" style="height: 300px;"></div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header  bg-secondary-tt text-light">
+            <img src="assets/img/verificado.png" class="rounded me-2" alt="..." style="height: 1.5em;">
+            <strong class="me-auto">Tempo Together</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" style="filter: invert();"></button>
+          </div>
+          <div class="toast-body  bg-secondary-tt text-light">
+            Form submitted successfully!
+          </div>
+        </div>
+      </div>
+    <router-outlet></router-outlet>
+  </main>
+  

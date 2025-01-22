@@ -1,0 +1,45 @@
+<app-header></app-header>
+<main class="d-flex flex-column h-100 w-100 justify-content-center align-items-center main-login bg-black">
+  <div class="container container-tt">
+    <h1 class="title-form title-form-band">Nosotros somos...</h1>
+    @if(finished){
+      <div class="alert alert-success" role="alert">
+        <h2>Banda registrada con éxito.</h2>
+      </div>
+      <div>
+        <h4>¿Hay mas miembros a tu banda?</h4>
+        <div class="d-flex gap-5 justify-content-center">
+          <a class="btn btn-primary w-50 btn-color-primary-tt" [routerLink]="['/miembros']" routerLinkActive="router-link-active" >Agregar miembro</a>
+          <a class="btn btn-primary w-50 btn-color-secondary-tt" [routerLink]="['/home-usuario']" routerLinkActive="router-link-active" >Finalizar</a>
+        </div>
+      </div>
+    }@else {
+      <div *ngIf="error_message" class="alert alert-danger mt-3">{{error_message}}</div>
+
+      <form [formGroup]="registerBandForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Nombre de la Banda</label>
+          <input type="text" class="form-control" id="name" formControlName="name">
+          <div *ngIf="submitted && registerBandForm.controls['name'].invalid" class="text-danger">
+            <div *ngIf="registerBandForm.controls['name'].errors?.['required']">El nombre de la banda es obligatorio.</div>
+            <div *ngIf="registerBandForm.controls['name'].errors?.['maxlength']">El nombre de la banda no puede superar los 12 caracteres.</div>
+            <div *ngIf="registerBandForm.controls['name'].errors?.['minlength']">El nombre de la banda debe tener al menos 3 caracteres.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="description">Descripción</label>
+          <input type="text" class="form-control" id="description" formControlName="description">
+          <div *ngIf="submitted && registerBandForm.controls['description'].invalid" class="text-danger">
+            <div *ngIf="registerBandForm.controls['description'].errors?.['required']">La descripción es obligatoria.</div>
+            <div *ngIf="registerBandForm.controls['description'].errors?.['maxlength']">La descripción no puede superar los 120 caracteres.</div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 my-4 btn-color-primary-tt">Registrar Banda</button>
+
+        <input type="hidden" formControlName="latitude" value="{{getLatitude()}}">
+        <input type="hidden" formControlName="longitude" value="{{getLongitude()}}">
+        <input type="hidden" formControlName="user_id" value="{{getUserId()}}">
+      </form>
+    }
+    </div>
+</main>

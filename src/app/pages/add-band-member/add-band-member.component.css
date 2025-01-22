@@ -1,0 +1,23 @@
+.main-login{
+    height: auto !important;
+    color: white;
+    min-height: 100vh !important;
+}
+
+.addMember{
+    background-color: transparent;
+    color: #D61A46;
+    border: none;
+}
+.addMember:hover{
+    text-decoration: underline;
+}
+
+.member{
+    border-bottom: solid #151619 2px !important;
+}
+@media (max-width: 530px) {
+    .title-form{
+        font-size: 6em !important;
+    }
+}

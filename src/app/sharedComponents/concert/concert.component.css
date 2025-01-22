@@ -1,0 +1,25 @@
+.concert{
+    background-color: #151619;
+    color: white;
+    height: 12em;
+}
+
+
+@media (max-width: 768px) {
+    .card-tt{
+        max-height: 15em !important;
+        min-height: auto !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .card-title{
+        font-size: 1.2em !important;
+    }
+    .card-text{
+        font-size: 0.8em !important;
+    }
+    .card-btn{
+        height: 1.5em !important;
+    }
+}

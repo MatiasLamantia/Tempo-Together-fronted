@@ -1,0 +1,40 @@
+<app-header></app-header>
+  <main class="container-fluid  text-white bg-black p-5 row w-100 main-home">
+    <section class="text-center mb-5 d-flex w-100 align-items-center justify-content-center gap-4 rounded section-home main">
+      <section class="col-md-6 col-12 p-5">
+        <h2 class="title-xl unimos">Unimos a músicos locales</h2>
+        <button class="btn btn-light mt-3 w-50" [routerLink]="['/registrate']" routerLinkActive="router-link-active">Unete</button>
+      </section>
+      <section class="col-0 col-md-6 h-100">
+        <img src="assets/img/mainBackground.jpg" alt="Icono de una Banda" class="h-100 w-100 img-fluid rounded background-img">
+      </section>
+    </section>
+    <section class="text-center mb-5 d-flex w-100 align-items-center justify-content-center gap-4 section-home band">
+      <section class="col-0 col-md-6 h-100">
+        <img src="assets/img/bandBackground.jpg" alt="Icono de una Banda" class="h-100 w-100 img-fluid rounded background-img">
+      </section>
+      <section class="col-md-6 col-12 p-5">
+        <h2 class="title-xl">Bandas</h2>
+        <a [routerLink]="['/registrate']" routerLinkActive="router-link-active" class="btn btn-light w-50">Buscar</a>
+      </section>
+    </section>
+    <section class="text-center mb-5 d-flex w-100 align-items-center justify-content-center gap-4 rounded section-home musician">
+      <section class="col-md-6 col-12 p-5">
+        <h2 class="title-xl">Músicos</h2>
+        <a [routerLink]="['/registrate']" routerLinkActive="router-link-active" class="btn btn-light w-50">Buscar</a>
+      </section>
+      <section class="col-0 col-md-6 h-100">
+        <img src="assets/img/musicianBackground.jpg" alt="Icono de una Banda" class="h-100 w-100 img-fluid rounded background-img">
+      </section>
+    </section>
+  
+
+  <section class="card bg-secondary-tt text-white text-center p-3 section-background concert-bg section-home">
+      <section class="w-50 d-flex align-items-center h-100 concierto-section">
+          <div class="card-body h-auto">
+            <h2 class="title-xl">Conciertos</h2>
+            <p class="card-text">Encuentra conciertos cercanos para ti para tener siempre un buen plan</p>
+            <a [routerLink]="['/registrate']" routerLinkActive="router-link-active" class="btn btn-light">Buscar</a>            </div>
+      </section>
+  </section>
+</main>

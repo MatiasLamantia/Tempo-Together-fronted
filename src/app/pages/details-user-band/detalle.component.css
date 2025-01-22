@@ -1,0 +1,86 @@
+.main-detalle{
+    min-height: 100vh;
+    z-index: -2 !important;
+}
+
+.icono-div{
+    height:15em;
+    width: 15em;
+}
+.icono-detalle{
+    object-fit: cover;
+}
+.icono-instrumento{
+    height: 2.5em;
+    width: 2.5em;
+}
+.title-detalle{
+    border-bottom: 1px solid #D61A46;
+}
+.contact-list{
+    list-style-type: none;
+}
+.container-img {
+    width: 100%;
+    height: 20vh;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+  
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 1) 90%);
+    pointer-events: none; 
+  }
+
+  .concert-list {
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    overflow-x: auto !important;
+    gap: 1rem !important; /* Espacio entre las tarjetas */
+  }
+  
+  @media (max-width: 992px) {
+    .row-band{
+      width: 100% !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .col-icono{
+      display: none !important;
+    }
+    .icono-mobile{
+      display: flex !important;
+      gap: 2em;
+      margin-bottom: 1em;
+    }
+    .icono-detalle-mobile{
+      height: 7em !important;
+      width: 7em !important;
+    }
+    .age,
+    .name{
+      display: none !important;
+    }
+    .img-details-bg{
+      max-height: 120px !important;
+    }
+    .col-text{
+      margin: 0% !important;
+      padding: 0% !important;
+    }
+    
+  }
+

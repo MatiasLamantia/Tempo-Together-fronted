@@ -1,0 +1,9 @@
+.main{
+    min-height: 100vh;
+}
+
+@media (max-width: 992px) {
+    .border-bottom{
+        border: none !important;
+    }
+}

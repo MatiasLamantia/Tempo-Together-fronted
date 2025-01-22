@@ -1,0 +1,8 @@
+.main-verTodos {
+    min-height: 100vh;
+}
+@media (max-width: 768px) {
+   .select-tipo{
+         width: 30% !important;   
+    }
+}

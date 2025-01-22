@@ -1,0 +1,110 @@
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none; 
+}
+
+.logo-img{
+  height: 6em;
+}
+.user-icon{
+  height: 3em;
+  width: 100%;
+  cursor: pointer;
+}
+
+.search-container{
+  width: 35%;
+}
+
+.resultado:hover{
+  background-color: #24262c !important;
+}
+
+.btn-login-tt{
+  padding: 1em;
+  font-weight: bold;
+  height: 3em;
+}
+
+.btn-login-tt:hover{
+  background-color: #a90f37;
+}
+
+.btn-registro-tt{
+  background-color: transparent;
+  border: #122A4B solid 1px;
+  padding: 1em;
+  color: #24508e;
+  font-weight: bold;
+  height: 3em;
+}
+
+.btn-registro-tt:hover{
+  background-color: #122A4B;
+  color: white;
+}
+
+
+.search-results{
+  top: 5em;
+}
+
+.icon-header{
+  height: 1.5em;
+  width: 1.5em;
+}
+@media (max-width: 768px) {
+  .logout-bt{
+    display: none;
+  }
+
+  .logout-li{
+    display: block !important;
+  }
+  .bt-header{
+    font-size: 0.7em !important;
+  }
+  .logo-img{
+    height: 5em;
+  }
+  .header-tt{
+    padding: 0.2em !important;
+  }
+}
+
+.bb-tt{
+  border-bottom: 1px solid #1f2024;
+}
+@media (max-width: 600px) {
+  .logo-img{
+    height: 4em;
+  }
+  
+  .search-container{
+    width: 40%;
+  }
+
+  .buscar{
+    height: 2em;
+  }
+
+
+  .search-results{
+    top: 3.5em;
+  }
+}
+
+@media (max-width: 500px) {
+  .registro-bt{
+    display: none !important;
+  }
+  .logo-img{
+    height: 3em;
+  }
+}

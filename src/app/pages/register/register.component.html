@@ -1,0 +1,132 @@
+<app-header></app-header>
+<main class="d-flex flex-column w-100 justify-content-center align-items-center main-register bg-black pb-5">
+  <div class="container container-tt">
+    <div class="d-flex justify-content-center">
+      @if(!editUser){
+       <h1 class="title-form text-white text-center bienvenido">Bienvenido</h1>
+      }@else{
+        <h1 class="title-form text-white text-center bienvenido">Editar datos</h1>
+      }
+      <img src="assets/img/Nota_caras.svg" class="icono-bienvenido">
+    </div>
+    <div *ngIf="error_message" class="alert alert-danger mt-3" id="alertError">
+      <pre>{{ error_message }}</pre>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-register">
+      <div class="form-group mt-2">
+        <label for="username">Nombre de usuario</label>
+        <input type="text" class="form-control" id="username" formControlName="username" placeholder="Introduzca el nombre de usuario">
+        <div *ngIf="submitted && registerForm.controls['username'].invalid" class="text-danger">
+          <div *ngIf="registerForm.controls['username'].errors?.['required']">El nombre de usuario es obligatorio.</div>
+          <div *ngIf="registerForm.controls['username'].errors?.['maxlength']">El nombre de usuario no puede superar los 12 caracteres.</div>
+        </div>
+      </div>
+
+      <div class="form-group mt-3">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email" placeholder="Introduzca el email">
+        <div *ngIf="submitted && registerForm.controls['email'].invalid" class="text-danger">
+          <div *ngIf="registerForm.controls['email'].errors?.['required']">El email es obligatorio.</div>
+          <div *ngIf="registerForm.controls['email'].errors?.['email']">El email no es válido.</div>
+        </div>
+      </div>
+
+      @if(!editUser){
+      <div class="form-group mt-3">
+        <label for="password">Contraseña</label>
+        <input type="password" class="form-control" id="password" formControlName="password" placeholder="Introduzca la contraseña">
+        <div *ngIf="submitted && registerForm.controls['password'].invalid" class="text-danger">
+          <div *ngIf="registerForm.controls['password'].errors?.['required']">La contraseña es obligatoria.</div>
+          <div *ngIf="registerForm.controls['password'].errors?.['minlength']">La contraseña debe tener al menos 8 caracteres.</div>
+          <div *ngIf="registerForm.controls['password'].errors?.['maxlength']">La contraseña no puede superar los 20 caracteres.</div>
+        </div>
+      </div>
+      }
+
+
+      <div class="row">
+        <div class="form-group col-12 col-md-6  mt-3">
+          <label for="name">Nombre</label>
+          <input type="text" class="form-control" id="name" formControlName="name" placeholder="Introduzca su nombre">
+          <div *ngIf="submitted && registerForm.controls['name'].invalid" class="text-danger">
+            <div *ngIf="registerForm.controls['name'].errors?.['required']">El nombre es obligatorio.</div>
+            <div *ngIf="registerForm.controls['name'].errors?.['minlength']">El nombre debe tener al menos 2 caracteres.</div>
+            <div *ngIf="registerForm.controls['name'].errors?.['maxlength']">El nombre no puede superar los 20 caracteres.</div>
+          </div>
+        </div>
+        
+        <div class="form-group col-12 col-md-6 mt-3">
+          <label for="lastname">Apellido</label>
+          <input type="text" class="form-control" id="lastname" formControlName="lastname" placeholder="Introduzca su apellido">
+          <div *ngIf="submitted && registerForm.controls['lastname'].invalid" class="text-danger">
+            <div *ngIf="registerForm.controls['lastname'].errors?.['required']">El apellido es obligatorio.</div>
+            <div *ngIf="registerForm.controls['lastname'].errors?.['minlength']">El apellido debe tener al menos 2 caracteres.</div>
+            <div *ngIf="registerForm.controls['lastname'].errors?.['maxlength']">El apellido no puede superar los 20 caracteres.</div>
+          </div>
+        </div>
+      </div>
+      
+
+      
+      <div class="row">
+        <div class="form-group col-12 col-md-6 mt-3">
+          <label for="age">Edad</label>
+          <input type="number" class="form-control" id="age" formControlName="age" placeholder="Introduzca su edad">
+          <div *ngIf="submitted && registerForm.controls['age'].invalid" class="text-danger">
+            <div *ngIf="registerForm.controls['age'].errors?.['required']">La edad es obligatoria.</div>
+            <div *ngIf="registerForm.controls['age'].errors?.['max']">La edad no puede superar los 99 años.</div>
+          </div>
+        </div>
+        
+        <div class="form-group col-12 col-md-6 mt-3">
+          <!-- <span class="form-optional">(opcional)</span> -->
+          <label for="telephone">Teléfono</label>
+          <input type="text" class="form-control mb-4" id="telephone" formControlName="telephone" placeholder="Introduzca su télefono">
+          <div *ngIf="submitted && registerForm.controls['telephone'].invalid" class="text-danger">
+            <div *ngIf="registerForm.controls['telephone'].errors?.['minlength']">El teléfono debe tener 9 caracteres.</div>
+            <div *ngIf="registerForm.controls['telephone'].errors?.['maxlength']">El teléfono no puede superar los 9 caracteres.</div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="form-group mt-3 d-flex align-items-start gap-4 ">
+        <!-- <span class="form-optional">(opcional)</span> -->
+        @if(editUser){
+          <section class="editIcon">
+            <img [src]="iconUser" class="w-100 rounded-circle">
+          </section>
+        }
+         <section>
+          <label for="icon">Foto de perfil</label>
+          <input type="file" class="form-control" id="icon" (change)="onFileChange($event)">
+         </section>
+      </div>
+      
+      <section>
+        <div class="form-group my-5">
+          <label for="map" class="mb-3">¿De donde eres?</label>
+          <div class="" style="overflow: hidden;border-radius: 1em;">
+            <div id="map"></div>
+          </div>
+          <div *ngIf="submitted && registerForm.controls['latitude'].invalid" class="text-danger">
+            <div *ngIf="registerForm.controls['latitude'].errors?.['required']">La ubicación es obligatoria.</div>
+          </div>
+        </div>
+      </section>
+
+
+      @if(!editUser){
+        <button type="submit" class="btn btn-primary btn-block w-100 btn-color-primary-tt mb-3">Registrarse</button>
+        <a [routerLink]="['/login']" class="">Iniciar sesión</a>
+      }@else{
+        <button type="submit" class="btn btn-primary btn-block w-100 btn-color-primary-tt mb-5">Editar</button>
+
+      }
+
+      
+    </form>
+    
+  </div>
+</main>

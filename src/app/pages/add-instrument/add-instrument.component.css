@@ -1,0 +1,26 @@
+.main-addInstrument{
+    min-height: 100vh !important;
+    height: auto !important;
+    color: white;
+}
+.nota_caras{
+    height: 7em;
+
+}
+.form-login{
+    width: 90%;
+}
+.range_point{
+  margin-top: -10px;
+  font-size: 0.8em !important;
+  opacity: 0.7;
+}
+
+@media (max-width: 578px) {
+    .title-form{
+        font-size: 6em !important;
+    }
+    .range_point{
+        font-size: 0.6em !important;
+    }
+}

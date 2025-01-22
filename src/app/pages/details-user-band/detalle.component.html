@@ -1,0 +1,137 @@
+
+  <app-header></app-header>
+  <main class="text-light bg-black main-detalle">
+      @if (isBand) {
+        <article class="container-img">
+            <div class="overlay"></div>
+            <img src="assets/img/detalleBackground.jpg" alt="" class="img-cover">
+        </article>
+        
+        <article class="container d-flex justify-content-center">
+            <section class="row w-75 h-100 row-band">
+                <section class="col-0 col-md-4 d-flex flex-column align-items-end col-icono">
+                    <article class="icono-div">
+                        <img src="assets/img/bandBackgroundDetalle.jpg" alt="Icono del usuario" class="rounded-circle h-100 w-100 icono-detalle ">
+                    </article>
+                    <article class="mt-2 text-start w-100"> 
+                        @for(miembro of respuesta.members; track respuesta.member) {
+                        <h5 class="w-100 text-start mt-4"><i class="fa-solid fa-user px-3" style="color: #D61A46;"></i>{{miembro.name}}</h5>
+                        }
+                    </article>
+                </section>
+                    
+                <section class="col-12 col-md-6 mt-3 mx-4 col-text">
+                    <section class="d-none icono-mobile">
+                        <img src="assets/img/bandBackgroundDetalle.jpg" alt="Icono del usuario" class="icono-detalle-mobile rounded-circle h-100 w-100">
+                        <div>
+                            <h1 class="mb-0">{{respuesta.name}}</h1>
+                            <span class="subtitle-sm-tt">Banda</span>   
+
+                        </div>
+                                         
+                    </section>
+                    <h1 class="mb-0 name">{{respuesta.name}}</h1>
+                    <div class="mt-4">
+                        <h3 class="title-detalle pb-2 mb-3">Contacto:</h3>
+                        <p><i class="fa-regular fa-envelope color-primary"></i><span class="mx-2">{{respuesta.email}}</span></p>
+                        <p><i class="fa-solid fa-phone color-primary"></i><span class="mx-2">{{respuesta.telephone}}</span></p>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h3 class="title-detalle pb-2 mb-3">Descripcion:</h3>
+                        <p>{{respuesta.description}}</p>
+                    </div>
+                </section>
+               
+            </section>
+        </article>
+
+        <article class="container mt-5">
+            <h3 class="title-detalle pb-2 mb-3">Conciertos:</h3>
+            <section class="row">
+                @if (emptyConcerts){
+                    <div class="w-100 p-5 d-flex flex-column align-items-center justify-content-center">
+                        <img src="assets/img/Nota_caras.svg" alt="Logo de auriculares" style="height: 8em;">
+                        <article class="text-center">
+                            <h3>No hemos podido encontradar Conciertos</h3>
+                    </article>
+                    </div>
+                }@else {
+                    @for(concierto of respuesta.concerts; track respuesta.concerts){
+                        <app-concert [concert]="concierto" class="concert col-12 col-md-6"></app-concert>
+                    }
+                }
+            </section>
+        </article>
+
+        <article class="container mt-5">
+            <h3 class="title-detalle pb-2 mb-3">Vacantes:</h3>
+            <section class="row">
+                @if (emptyRequests){
+                    <div class="w-100 p-5 d-flex flex-column align-items-center justify-content-center">
+                        <img src="assets/img/Nota_caras.svg" alt="Logo de auriculares" style="height: 8em;">
+                        <article class="text-center">
+                            <h3>No hemos podido encontradar vacantes</h3>
+                    </article>
+                    </div>
+                }@else {
+                    @for(solicitud of respuesta.requests; track respuesta.request){
+                        <app-request [request]="solicitud" class="request col-12 col-md-6"></app-request>
+                    }
+                }
+            </section>
+        </article>
+      }
+      @else {
+        <article class="container-img img-details-bg">
+            <div class="overlay"></div>
+            <img src="assets/img/detalleBackground.jpg" alt="" class="img-cover ">
+        </article>
+        
+        <article class="container">
+            <section class="row w-100">
+                <section class="col-12 col-md-5 d-flex justify-content-end col-icono">
+                    <div class="icono-div mx-5">
+                        <img src="{{respuesta.icon}}" alt="Icono del usuario" class="icono-detalle rounded-circle h-100 w-100">
+                        <h2 class="w-100 text-center mt-4">&#64;{{respuesta.username}}</h2>
+                    </div>
+                </section>
+                <section class="col-12 col-md-7 mt-3">
+                    <section class="d-none icono-mobile">
+                        <img src="{{respuesta.icon}}" alt="Icono del usuario" class="icono-detalle-mobile rounded-circle h-100 w-100">
+                        <div>
+                            <h1 class="mb-0">{{respuesta.name+" "+respuesta.lastname}}</h1>
+                            <span class="subtitle-sm-tt">{{respuesta.age}} años</span>   
+                        </div>
+                                         
+                    </section>
+                    <h1 class="mb-0 name">{{respuesta.name+" "+respuesta.lastname}}</h1>
+                    <span class="subtitle-sm-tt age">{{respuesta.age}} años</span>
+                    <div class="mt-4">
+                        <h3 class="title-detalle pb-2 mb-3">Contacto:</h3>
+                        <p><i class="fa-regular fa-envelope m"></i><span class="mx-2">{{respuesta.email}}</span></p>
+                        <p><i class="fa-solid fa-phone"></i><span class="mx-2">{{respuesta.telephone}}</span></p>
+                    </div>
+                    
+                    <h3 class="title-detalle mt-4 mb-3  pb-2">Instrumentos</h3>
+
+                    <section class="d-flex flex-wrap gap-3">
+                        @for (instrument of respuesta.instruments; track respuesta.instrument) {
+                            <article class="d-flex gap-4 align-items-between rounded">
+                                <div class="bg-secondary-tt px-2 py-2 rounded-3 d-flex gap-2 align-items-center">
+                                    <img [src]="src(instrument.icon)" alt="" class="icono-instrumento">
+                                    <span>{{level(instrument.instrument_level)}}</span>
+                                  </div>
+                            </article>
+                        }   
+                        
+  
+                    </section>
+                </section>
+               
+            </section>
+        </article>
+          
+      }
+  </main>
+  

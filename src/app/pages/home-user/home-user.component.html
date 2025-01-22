@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+  <main class="bg-black main">
+    <article class="container-lg pt-4 text-light">
+        <section class="row">
+            <div class="w-100 d-flex justify-content-between align-items-center pb-2 mb-4 border-bottom">
+                <h1 class="">Conciertos mas cercanos</h1>
+                <a routerLink="/buscar/conciertos" routerLinkActive="active" class="color-primary" style="text-decoration: none;">Ver todas </a>
+            </div>
+            @for (concert of getConcerts(); track concert.id) {
+                <div class="col-md-6 col-12 mb-4">
+                    <app-concert [concert]="concert" class="concert"></app-concert>
+                </div>
+            }
+        </section>
+
+        <section class="row">
+            <div class="w-100 d-flex justify-content-between align-items-center pb-2 mb-4 border-bottom">
+                <h1 class="">Band Requests</h1>
+                <a routerLink="/buscar/requests" routerLinkActive="active" class="color-primary" style="text-decoration: none;">Ver todas </a>
+            </div>
+            @for (request of getRequest(); track user.id) {
+                <div class="col-12 col-sm-6 mb-4">
+                    <app-request [request]="request" class="request"></app-request>
+                </div>      
+            }
+        </section>
+
+        </article>
+</main>

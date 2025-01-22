@@ -1,0 +1,57 @@
+<header class="text-light p-3 bg-black p-3 header-tt">
+  <article class="container-md  d-flex justify-content-between">
+
+    <section class="logo">
+      <a routerLink="/"><img src="assets/img/Logo_horizontal.svg" alt="TempoTogether" class="logo-img"></a>
+    </section>
+
+    <section class="d-flex align-items-center position-relative search-container">
+      <input type="text" class="form-control mr-2 buscar" placeholder="Buscar..." (input)="buscar($event)">
+      <div class="search-results position-absolute w-100 bg-secondary-tt  mt-2 border rounded p-0" *ngIf="searchResults.length > 0" style="z-index: 1000;">
+        <ul class="list-group">
+          <li class="list-group-item bg-secondary-tt text-light resultado pointer-tt" *ngFor="let result of searchResults" (click)="detalles(result)">
+            <div *ngIf="result.user_id">
+              <img [src]="result.icon" class="rounded-circle mr-5" alt="User Icon" width="30" height="30">
+              &nbsp; {{ result.username }}
+            </div>
+            <div *ngIf="result.band_id">
+              <i class="fas fa-music mr-2" style="height: 30px;width: 30px;"></i>
+              &nbsp; {{ result.name }}
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="d-flex justify-content-center align-items-center gap-3">
+      @if(!logged()){
+        <a routerLink="/login"><button class="btn btn-login-tt d-flex align-items-center btn-color-primary-tt bt-header">Inicar sesión</button></a>
+        <a routerLink="/registrate"><button class="btn btn-registro-tt  d-flex align-items-center bt-header registro-bt">Registro</button></a>
+
+      }@else {
+        <button class="btn btn-secondary btn-color-primary-tt logout-bt" (click)="cerrarSesion()">Logout</button>    
+        <div class="btn-group">
+          <img [src]="getUserIcon()" class="user-icon rounded-circle" data-bs-toggle="dropdown" aria-expanded="false" width="30" height="30">
+          <ul class="dropdown-menu bg-secondary-tt">
+            @if(user.type !== "band"){
+              <li class="bb-tt"><a class="dropdown-item py-2" routerLink="/registro-banda" routerLinkActive="active"> <img src="assets/icons/band.png" alt="Icon Band" class="icon-header">&nbsp; Agregar banda</a></li>
+            }@else {
+              <li class="bb-tt"><a class="dropdown-item py-2" routerLink="/miembros" routerLinkActive="active"> <img src="assets/icons/new-account.png" alt="Icon Band" class="icon-header">&nbsp; Añadir miembros</a></li>
+              <li class="bb-tt"><a class="dropdown-item py-2" (click)="miBanda()" routerLinkActive="active"> <img src="assets/icons/band.png" alt="Icon Band" class="icon-header">&nbsp; Mi Banda</a></li>
+              <li class="bb-tt"><a class="dropdown-item py-2" routerLink="/nuevo-concierto" routerLinkActive="active"><img src="assets/icons/christmas.png" alt="Icon Band" class="icon-header">&nbsp; Añadir Concierto</a></li>
+              <li class="bb-tt"><a class="dropdown-item py-2" routerLink="/nueva-request" routerLinkActive="active"><img src="assets/icons/add-group.png" alt="Icon Band" class="icon-header">&nbsp; Buscar nuevo integrante</a></li>
+            }
+            <li class="bb-tt"><a class="dropdown-item py-2"  routerLink="/instrumentos" routerLinkActive="active"><img src="assets/icons/trumpet.png" alt="Icon Band" class="icon-header">&nbsp; Mis Instrumentos</a></li>
+            <li class="bb-tt"><a class="dropdown-item py-2"  routerLink="/editar-usuario" routerLinkActive="active"><img src="assets/icons/edit-info.png" alt="Icon Band" class="icon-header">&nbsp; Editar</a></li>
+            <li class="bb-tt"><a class="dropdown-item py-2 pointer-tt" (click)="miCuenta()"><img src="assets/icons/account.png" alt="Icon Band" class="icon-header">&nbsp; Mi Cuenta</a></li>
+            <li class="bb-tt"><a class="dropdown-item d-none logout-li py-2 " (click)="cerrarSesion()"><img src="assets/icons/logout.png" alt="Icon Band" class="icon-header">&nbsp; Salir</a></li>
+
+
+
+          </ul>
+        </div> 
+      }
+    </section>
+
+  </article>
+</header>

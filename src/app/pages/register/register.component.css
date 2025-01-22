@@ -1,0 +1,71 @@
+.main-register{
+  height: auto !important;
+  color: white;
+
+}
+.icono-bienvenido{
+  height: 9em;
+}
+.main-login{
+  height: 100vh !important;
+}
+.editIcon{
+  width: 20%;
+}
+
+@media (min-width: 768px) {
+  .form-login{
+      width: 40%;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .bienvenido{
+    font-size: 5em !important;
+  }
+
+  .icono-bienvenido{
+    height: 6em;
+  }
+  #map{
+    height: 250px !important;
+  }
+}
+@media (max-width: 500px) {
+  .title-form{
+      font-size: 6em;
+  }
+  .main-login{
+      padding-top: 5em;
+      justify-content: start !important;
+  }
+}
+
+@media (max-width: 415px) {
+  .bienvenido{
+    font-size: 4em !important;
+  }
+  .icono-bienvenido{
+    height: 4em;
+  }
+}
+
+.map-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 30px;
+}
+
+.map-frame {
+  border: 2px solid black;
+  height: 100%;
+}
+
+#map {
+  width: 100%;
+  height: 350px; /* Ajusta esta altura según sea necesario */
+}
