@@ -7,7 +7,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SearchService {
-  private apiUrl = 'http://localhost:8000/api'; // URL de tu API
+  private apiUrl = 'https://tempo-together-backend-production.up.railway.app/api'; // URL de tu API
 
   constructor(private http: HttpClient) {}
 

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BandService {
-  private apiUrl = 'http://localhost:8000/api'; // URL de tu API
+  private apiUrl = 'https://tempo-together-backend-production.up.railway.app/api'; // URL de tu API
 
   constructor(private http: HttpClient) {}
 
