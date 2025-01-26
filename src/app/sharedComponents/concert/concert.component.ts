@@ -18,7 +18,7 @@ export class ConcertComponent implements OnInit{
 
   ngOnInit(): void {
 
-this.concert.poster = "http://localhost:8000"+ this.concert.poster;
+this.concert.poster = "https://tempo-together-backend-production.up.railway.app"+ this.concert.poster;
   }
 
   concertInfo(){

@@ -70,7 +70,7 @@ export class DetailsUserBandComponent {
     }else{
       this.searchService.getUserDetails(this.username).subscribe({
         next: (response) => {
-          response.user.icon = "http://localhost:8000" + response.user.icon;
+          response.user.icon = "https://tempo-together-backend-production.up.railway.app" + response.user.icon;
           this.respuesta = response.user;
         },
         error: (error) => {

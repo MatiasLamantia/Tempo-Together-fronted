@@ -60,7 +60,7 @@ export class UserService {
 
   getUserIcon(){
     let user = this.loadUserFromLocalStorage();
-     user = "http://localhost:8000"+ user.icon;
+     user = "https://tempo-together-backend-production.up.railway.app"+ user.icon;
     return user;
   }
 

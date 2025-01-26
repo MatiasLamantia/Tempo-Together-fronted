@@ -86,7 +86,7 @@ export class RegisterComponent implements AfterViewInit {
             });    
             this.latUser = data.latitude;
             this.longUser = data.longitude;    
-            this.iconUser = "http://localhost:8000"+ data.icon;
+            this.iconUser = "https://tempo-together-backend-production.up.railway.app"+ data.icon;
             this.initializeMap();
             this.originalValues = this.registerForm.value;
  

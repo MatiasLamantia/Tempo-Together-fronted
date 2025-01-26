@@ -59,11 +59,11 @@ export class HeaderComponent implements OnInit {
   buscar(event: any) {
     const query = event.target.value.trim();
     if (query.length > 0) {
-      this.http.get(`http://localhost:8000/api/search?search=${query}`).subscribe((response: any) => {
+      this.http.get(`https://tempo-together-backend-production.up.railway.app/api/search?search=${query}`).subscribe((response: any) => {
         this.searchResults = response.results;
         this.searchResults.forEach((result: any) => {
           if (result.icon) {
-            result.icon = "http://localhost:8000" + result.icon;
+            result.icon = "https://tempo-together-backend-production.up.railway.app" + result.icon;
           }
         });
       });
